@@ -1,13 +1,9 @@
-// const generateContacts = async (number) => {};
-
-// await generateContacts(5);
-
 import fs from 'fs/promises';
 import { PATH_DB } from '../constants/contacts.js';
 import { createFakeContact } from '../utils/createFakeContact.js';
 
 // Функція для читання контактів з файлу
-const readContactsFromDb = async () => {
+export const readContactsFromDb = async () => {
   try {
     const data = await fs.readFile(PATH_DB, 'utf8');
     return JSON.parse(data);
@@ -18,7 +14,7 @@ const readContactsFromDb = async () => {
 };
 
 // Функція для запису контактів до файлу
-const writeContactsToDb = async (contacts) => {
+export const writeContactsToDb = async (contacts) => {
   try {
     await fs.writeFile(PATH_DB, JSON.stringify(contacts, null, 2));
   } catch (error) {
